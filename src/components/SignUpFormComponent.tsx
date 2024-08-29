@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { validateEmail, validatePassword } from 'utils/validators';
 import "styles/SignUpFormComponent.css";
 import InputComponent from "components/InputComponent";
-import ButtonComponent from "components/buttonComponent";
 
 const SignUpFormComponent = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +11,7 @@ const SignUpFormComponent = () => {
     password: '',
     agreeToTerms: false,
   });
+  
   const [errors, setErrors] = useState({
     firstName: '',
     lastName: '',
@@ -66,7 +66,6 @@ const SignUpFormComponent = () => {
           <p>Or use your email for registration</p>
         </div>
         <form onSubmit={clickToSubmit} className="signup-form">
-          
           <div className="input-row">
             <InputComponent
               type="text"
@@ -74,9 +73,6 @@ const SignUpFormComponent = () => {
               placeholder="First Name"
               value={formData.firstName}
               onChange={handleChange}
-              width=""
-              customClass="custom-firstname"
-              error={errors.firstName}
               required
             />
             <InputComponent
@@ -85,32 +81,29 @@ const SignUpFormComponent = () => {
               placeholder="Last Name"
               value={formData.lastName}
               onChange={handleChange}
-              width=""
-              customClass=""
-              error={errors.lastName}
               required
             />
           </div>
-          <InputComponent
-            type="text"
-            name="email"
-            placeholder="E-mail"
-            value={formData.email}
-            onChange={handleChange}
-            customClass=""
-            error={errors.email}
-            required
-          />
-          <InputComponent
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-            customClass=""
-            error={errors.password}
-            required
-          />
+          <div className="input-row">
+            <InputComponent
+              type="text"
+              name="email"
+              placeholder="E-mail"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="input-row">
+            <InputComponent
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
           <small>8 Characters min. • One number</small>
 
           <div className="checkbox-row">

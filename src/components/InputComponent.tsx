@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'styles/InputComponent.css';
 
 interface InputComponentProps {
@@ -20,26 +20,28 @@ const InputComponent: React.FC<InputComponentProps> = ({
     value,
     onChange,
     required = false,
-    width = '100%', // 默認寬度
     customClass = '', // 默認為空字符串
     error,
   }) => {
+    const [hasContent, setHasContent] = useState(!!value);
+    const handleChange = (event: any) => {
+        const newValue = event.target.value;
+        setHasContent(!!newValue);
+        if (onChange) onChange(event);
+      };
     return(
-        <>
-         {/* <div className={`input-container ${customClass}`}> */}
+        <div className={`input-container ${customClass}`}>
             <input
                 type={type}
                 name={name}
-                placeholder={placeholder}
                 value={value}
-                onChange={onChange}
+                onChange={handleChange}
                 required={required}
-                style={{ width }} // 動態設置寬度
-                className="input-field"
             />
-            {error && <div className="error-message">{error}</div>} {/* 显示错误信息 */}
-        {/* </div> */}
-        </>
+            <label className={`floating-label ${hasContent ? 'has-content' : ''}`}>
+                {placeholder}
+            </label>
+        </div>
     )
 }
 export default InputComponent;
