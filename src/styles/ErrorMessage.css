@@ -1,0 +1,16 @@
+.error-message {
+    background-color: var(--custom-lightred);
+    border: 2px solid var(--custom-red);
+    padding: 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    display: flex;
+    align-items: flex-start;
+}
+  
+.error-icon {
+    color: var(--custom-red);
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 10px;
+}
