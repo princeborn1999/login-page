@@ -24,20 +24,31 @@ const InputComponent: React.FC<InputComponentProps> = ({
     error,
   }) => {
     const [hasContent, setHasContent] = useState(!!value);
+    const [showPassword, setShowPassword] = useState(type === 'password' ? false : true);
     const handleChange = (event: any) => {
         const newValue = event.target.value;
         setHasContent(!!newValue);
         if (onChange) onChange(event);
-      };
+    };
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
+    
     return(
         <div className={`input-container ${customClass}`}>
             <input
-                type={type}
+                type={showPassword ? 'text' : type}
                 name={name}
                 value={value}
                 onChange={handleChange}
                 required={required}
             />
+            {type === 'password' && (
+            <span className = {`toggle-password ${showPassword ? 'visible' : ''}`} 
+                  onClick={togglePasswordVisibility}>
+                <i className={`fas ${showPassword ? 'fa-eye' : 'fa-eye'}`}></i>
+            </span>
+            )}
             <label className={`floating-label ${hasContent ? 'has-content' : ''}`}>
                 {placeholder}
             </label>

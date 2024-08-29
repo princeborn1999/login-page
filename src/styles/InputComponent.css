@@ -45,6 +45,20 @@
     color: #000;
 }
 
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #888;
+}
+  
+.toggle-password.visible {
+    color: var(--custom-blue);
+}
+
 .input-field[type="checkbox"]{
     padding: 10px;
     margin: 10px 0;
