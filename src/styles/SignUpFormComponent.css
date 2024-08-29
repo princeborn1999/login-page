@@ -1,0 +1,173 @@
+body {
+  background-color: #f0f4fa;
+}
+
+.signup-container {
+  display: flex;
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 30px 50px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.back-section {
+  display: flex;
+  align-items: flex-start;
+}
+
+.back-link {
+  background: none;
+  white-space: nowrap;
+  display: inline-block;
+  border: none;
+  cursor: pointer; 
+  text-decoration: none; /* 移除預設下劃線 */
+  color: inherit; /* 繼承父元素的顏色 */
+  font-size: 16px; /* 調整字體大小 */
+  margin-left: 0; /* 確保靠左對齊 */
+  transition: box-shadow 1.5s ease; /* 平滑過渡陰影效果 */
+  border-bottom: 2px solid transparent;
+  padding-bottom: 4px;
+  font-size: 16px;
+  color: black;
+}
+
+.back-link :hover {
+  font-weight: 600; 
+  border-bottom-color: var(--custom-blue);
+}
+
+.form-section {
+  padding: 50px 50px 20px 0px;
+}
+
+.text-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.start-text {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.create-text {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 10px 0 20px;
+  text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);
+}
+
+.signup-btn-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.google-btn,
+.facebook-btn {
+  width: 48%;
+  padding: 15px 10px;
+  border: 2px solid var(--custom-blue);
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  background-color: #fff;
+  text-shadow: 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.4);
+}
+.google-btn:hover,
+.facebook-btn:hover {
+  background-color: var(--custom-blue); /* 滑鼠懸停時背景顏色 */
+  color: #fff; /* 滑鼠懸停時文字顏色 */
+  text-shadow: none;
+}
+
+.registration-text {
+  margin: 15px 0;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.registration-text p {
+  font-size: 14px;
+  margin: 0;
+  padding-right: 10px; /* 調整文字和橫線之間的距離 */
+}
+
+/* text-with-line */
+.registration-text::after {
+  content: '';
+  flex-grow: 1;
+  height: 1px;
+  background-color: #000;
+}
+
+.input-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-row input {
+  width: 48%;
+}
+
+.signup-form small {
+  display: block;
+  margin: 5px 0 20px;
+  color: #777;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.checkbox-row label{
+  font-size: 13px;
+  color: #777;
+  text-align: left; 
+  margin-left: 5px;
+}
+
+.signup-btn {
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  background-color: var(--custom-blue);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.signup-btn:hover {
+  background-color: var(--custom-blue);
+}
+
+.signup-container p {
+  text-align: center;
+}
+
+.signup-container a {
+  color: var(--custom-blue);
+  text-decoration: none;
+}
+
+.signup-container a:hover {
+  text-decoration: underline;
+}
+
+.account-login-prompt-wrap{
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.account-login-prompt{
+  color: #777;
+  margin-right:5px;
+}

@@ -1,0 +1,29 @@
+.input-field {
+    padding: 15px 10px; /* 增加內邊距 */
+    margin: 8px 0; /* 增加上下邊距 */
+    border: none !important;
+    border-radius: 0; /* 邊框圓角 */
+    font-size: 14px; /* 字體大小 */
+    width: 100%; /* 默認寬度 */
+    background-color: var(--custom-lightblue);
+}
+
+.input-field[type="checkbox"]{
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    width: 10px; /* 調整checkbox寬度 */
+    height: 10px; /* 調整checkbox高度 */
+    appearance: none; /* 移除瀏覽器預設樣式 */
+    background-color: #777; /* 背景顏色 */
+    cursor: pointer;
+    position: relative;
+}
+
+.error-message {
+    color: #e74c3c; /* 错误信息颜色 */
+    font-size: 12px;
+    margin-top: 5px; /* 错误信息与输入框的距离 */
+  }
