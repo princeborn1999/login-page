@@ -43,6 +43,10 @@ body {
   padding: 50px 50px 20px 0px;
 }
 
+.err-text-wrap {
+  margin: 0 0 20px;
+}
+
 .text-wrap {
   display: flex;
   flex-direction: column;
@@ -68,17 +72,26 @@ body {
 
 .google-btn,
 .facebook-btn {
+  display: flex;
+  align-items: center;
   width: 48%;
-  padding: 15px 10px;
+  padding: 15px;
   border: 2px solid var(--custom-blue);
   border-radius: 4px;
   font-size: 13px;
   cursor: pointer;
   background-color: #fff;
-  text-shadow: 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.4);
+}
+.google-btn i,
+.facebook-btn i{
+  font-size: 18px;
+  margin-right: 10px;
+  color: var(--custom-blue);
 }
 .google-btn:hover,
-.facebook-btn:hover {
+.facebook-btn:hover,
+.google-btn:hover i,
+.facebook-btn:hover i{
   background-color: var(--custom-blue); /* 滑鼠懸停時背景顏色 */
   color: #fff; /* 滑鼠懸停時文字顏色 */
   text-shadow: none;

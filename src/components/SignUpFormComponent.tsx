@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { validateEmail, validatePassword } from 'utils/validators';
 import "styles/SignUpFormComponent.css";
 import InputComponent from "components/InputComponent";
+import ErrorMessageComponent from "./ErrorMessageComponent";
 
 const SignUpFormComponent = () => {
   const [formData, setFormData] = useState({
@@ -31,7 +32,6 @@ const SignUpFormComponent = () => {
     if (passwordError) formErrors.password = passwordError;
 
     // 其他字段的验证逻辑
-
     return formErrors;
   };
 
@@ -58,9 +58,16 @@ const SignUpFormComponent = () => {
           <h2 className="start-text">Start from free</h2>
           <h1 className="create-text">Create an account</h1>
         </div>
+        <div className="err-text-wrap">
+          <ErrorMessageComponent />
+        </div>
         <div className="signup-btn-wrap">
-          <button className="google-btn">Sign up with Google</button>
-          <button className="facebook-btn">Sign up with Facebook</button>
+          <button className="google-btn"> 
+            <i className="fab fa-google "></i>Sign up with Google
+          </button>
+          <button className="facebook-btn">
+            <i className="fab fa-facebook-f"></i>Sign up with Facebook
+          </button>
         </div>
         <div className="registration-text">
           <p>Or use your email for registration</p>
