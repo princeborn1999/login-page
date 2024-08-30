@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { validateEmail, validatePassword } from 'utils/validators';
 import "styles/SignUpFormComponent.css";
 import InputComponent from "components/InputComponent";
+import CheckListComponent from "components/CheckListComponent";
 import ErrorMessageComponent from "./ErrorMessageComponent";
 
 const SignUpFormComponent = () => {
@@ -111,8 +112,7 @@ const SignUpFormComponent = () => {
               required
             />
           </div>
-          <small>8 Characters min. • One number</small>
-
+          <CheckListComponent />
           <div className="checkbox-row">
             <input
               type="checkbox"

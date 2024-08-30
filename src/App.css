@@ -4,15 +4,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 :root {
   --custom-blue: #3C71FF;
-}
-:root {
   --custom-red: #D71920;
-}
-:root {
   --custom-lightred: #F5C4C6;
-}
-:root {
   --custom-lightblue: #F1F5FF;
+  --custom-lightgreen: #4AE7A5;
 }
