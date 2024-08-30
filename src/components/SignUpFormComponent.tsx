@@ -3,6 +3,7 @@ import { validateEmail, validatePassword } from 'utils/validators';
 import "styles/SignUpFormComponent.css";
 import InputComponent from "components/InputComponent";
 import CheckListComponent from "components/CheckListComponent";
+import CheckBoxComponent from "components/CheckBoxComponent";
 import ErrorMessageComponent from "./ErrorMessageComponent";
 
 const SignUpFormComponent = () => {
@@ -112,19 +113,11 @@ const SignUpFormComponent = () => {
               required
             />
           </div>
-          <CheckListComponent />
+          <div className="">
+            <CheckListComponent />
+          </div>
           <div className="checkbox-row">
-            <input
-              type="checkbox"
-              name="agreeToTerms"
-              checked={formData.agreeToTerms}
-              onChange={handleChange}
-              required
-            />
-            <label className="">
-              By creating an account, you agree to accept our Privacy Policy,
-              Terms of Service and Notification settings.
-            </label>
+            <CheckBoxComponent formData={formData} handleChange={handleChange}/>
           </div>
           <button type="submit" className="signup-btn">Create a Free Account!</button>
         </form>

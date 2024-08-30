@@ -1,0 +1,36 @@
+.checkbox-container {
+    display: flex;
+    align-items: center;
+}
+.checkbox-input {
+    appearance: none; /* 移除默认样式 (通用) */
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    cursor: pointer;
+    background-color: #999; /* 背景颜色为灰色 */
+    border: 2px solid #999; /* 边框颜色为较深的灰色 */
+    border-radius: 4px; /* 圆角 */
+    position: relative;
+  }
+  
+  .checkbox-input:checked {
+    background-color: white; /* 当选中时的背景颜色为绿色 */
+    border-color: var(--custom-blue); /* 当选中时的边框颜色为绿色 */
+  }
+  
+  .checkbox-input:checked::after {
+    content: '✓'; /* 使用 Unicode 显示勾号 */
+    font-size: 18px;
+    color: var(--custom-blue); /* 勾号颜色为白色 */
+    position: absolute;
+    top: 0px;
+    left: 4px;
+  }
+  
+.checkbox-label {
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+  }
+  
