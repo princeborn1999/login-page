@@ -35,8 +35,6 @@ const SignUpFormComponent = () => {
     }else{
       setHasEmpty(false)
     }
-
-    console.log('Form submitted:', formData);
   };
 
   return (
@@ -45,71 +43,79 @@ const SignUpFormComponent = () => {
         <button className="back-link">← Back</button>
       </div>
       <div className="form-section">
-        <div className="text-wrap">
-          <h2 className="start-text">Start from free</h2>
-          <h1 className="create-text">Create an account</h1>
-        </div>
-        {hasEmpty && <div className="err-text-wrap">
-          <ErrorMessageComponent />
-        </div>}
-        <div className="signup-btn-wrap">
-          <button className="google-btn"> 
-            <i className="fab fa-google "></i>Sign up with Google
-          </button>
-          <button className="facebook-btn">
-            <i className="fab fa-facebook-f"></i>Sign up with Facebook
-          </button>
-        </div>
-        <div className="registration-text">
-          <p>Or use your email for registration</p>
-        </div>
-        <form className="signup-form" onSubmit={clickToSubmit}>
-          <div className="input-row">
-            <InputComponent
-              type="text"
-              name="firstName"
-              placeholder="First Name"
-              value={formData.firstName}
-              onChange={handleChange}
-            />
-            <InputComponent
-              type="text"
-              name="lastName"
-              placeholder="Last Name"
-              value={formData.lastName}
-              onChange={handleChange}
-            />
+          <div className="text-wrap">
+            <h2 className="start-text">Start from free</h2>
+            <h1 className="create-text">Create an account</h1>
           </div>
-          <div className="input-row">
-            <InputComponent
-              type="text"
-              name="email"
-              placeholder="E-mail"
-              value={formData.email}
-              onChange={handleChange}
-            />
+          {hasEmpty && <div className="err-text-wrap">
+            <ErrorMessageComponent />
+          </div>}
+          <div className="signup-btn-wrap">
+            <button className="google-btn"> 
+              <i className="fab fa-google "></i>Sign up with Google
+            </button>
+            <button className="facebook-btn">
+              <i className="fab fa-facebook-f"></i>Sign up with Facebook
+            </button>
           </div>
-          <div className="input-row">
-            <InputComponent
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={handleChange}
-            />
+          <div className="registration-text">
+            <p>Or use your email for registration</p>
           </div>
-          <div className="">
-            <CheckListComponent password={formData.password}/>
+          <form className="signup-form" onSubmit={clickToSubmit}>
+            <div className="input-row">
+              <InputComponent
+                type="text"
+                name="firstName"
+                placeholder="First Name"
+                value={formData.firstName}
+                onChange={handleChange}
+                hasError={hasEmpty && formData.firstName.trim() === ''}
+              />
+              <InputComponent
+                type="text"
+                name="lastName"
+                placeholder="Last Name"
+                value={formData.lastName}
+                onChange={handleChange}
+                hasError={hasEmpty && formData.lastName.trim() === ''}
+              />
+            </div>
+            <div className="input-row">
+              <InputComponent
+                type="text"
+                name="email"
+                placeholder="E-mail"
+                value={formData.email}
+                onChange={handleChange}
+                hasError={hasEmpty && formData.email.trim() === ''}
+              />
+            </div>
+            <div className="input-row">
+              <InputComponent
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={formData.password}
+                onChange={handleChange}
+                hasError={hasEmpty && formData.password.trim() === ''}
+              />
+            </div>
+            <div className="">
+              <CheckListComponent password={formData.password}/>
+            </div>
+            <div className="checkbox-row">
+              <CheckBoxComponent 
+                formData={formData} 
+                handleChange={handleChange} 
+                hasError={hasEmpty && formData.agreeToTerms === false}
+              />
+            </div>
+            <button type="submit" className="signup-btn">Create a Free Account!</button>
+          </form>
+          <div className="account-login-prompt-wrap">
+            <p className="account-login-prompt">Already have an account?</p>
+            <a href="#">Log in</a>
           </div>
-          <div className="checkbox-row">
-            <CheckBoxComponent formData={formData} handleChange={handleChange}/>
-          </div>
-          <button type="submit" className="signup-btn">Create a Free Account!</button>
-        </form>
-        <div className="account-login-prompt-wrap">
-          <p className="account-login-prompt">Already have an account?</p>
-          <a href="#">Log in</a>
-        </div>
       </div>
     </div>
   );

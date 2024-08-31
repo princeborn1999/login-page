@@ -6,8 +6,9 @@ interface FormData {
 interface CheckBoxComponentProps {
     formData: FormData;
     handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    hasError?: boolean;
 }
-const CheckBoxComponent: React.FC<CheckBoxComponentProps> = ({ formData, handleChange }) => {
+const CheckBoxComponent: React.FC<CheckBoxComponentProps> = ({ formData, handleChange, hasError }) => {
   return (
     <div className="checkbox-container">
         <div>
@@ -16,7 +17,7 @@ const CheckBoxComponent: React.FC<CheckBoxComponentProps> = ({ formData, handleC
                 name="agreeToTerms"
                 checked={formData.agreeToTerms}
                 onChange={handleChange}
-                className="checkbox-input"
+                className={`checkbox-input ${hasError ? 'checkbox-error' : ''}`}
             />
         </div>
        

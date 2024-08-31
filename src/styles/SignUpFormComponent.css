@@ -3,13 +3,13 @@ body {
 }
 
 .signup-container {
-  display: flex;
-  max-width: 600px;
+  max-width: 610px;
+  min-height: 635px;
   margin: 60px auto;
-  padding: 30px 50px;
+  padding: 30px 40px;
   background-color: #FFFFFF;
   border-radius: 10px;
-  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 4px 10px #DEE7FF;
 }
 
 .back-section {
@@ -24,25 +24,27 @@ body {
   border: none;
   cursor: pointer; 
   text-decoration: none; /* 移除預設下劃線 */
-  color: inherit; /* 繼承父元素的顏色 */
   font-size: 16px; /* 調整字體大小 */
-  margin-left: 0; /* 確保靠左對齊 */
   transition: box-shadow 1.5s ease; /* 平滑過渡陰影效果 */
   border-bottom: 2px solid transparent;
-  padding-bottom: 4px;
-  font-size: 16px;
+  padding: 0 4px 4px;
   color: black;
 }
 
-.back-link :hover {
+.back-link:hover {
   font-weight: 600; 
   border-bottom-color: var(--custom-blue);
 }
 
 .form-section {
-  padding: 50px 50px 20px 0px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 40px 0px 0px 0px;
+  max-width: 400px;
+  flex-direction: column;
+  margin: 0 auto;
 }
-
 .err-text-wrap {
   margin: 0 0 20px;
 }
@@ -55,12 +57,11 @@ body {
 
 .start-text {
   font-size: 18px;
-  font-weight: 500;
 }
 
 .create-text {
-  font-size: 28px;
-  font-weight: bold;
+  font-size: 30px;
+  font-weight: 700;
   margin: 10px 0 20px;
   text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);
 }
@@ -74,7 +75,8 @@ body {
 .facebook-btn {
   display: flex;
   align-items: center;
-  width: 48%;
+  width: 190px;
+  height: 48px;
   padding: 15px;
   border: 2px solid var(--custom-blue);
   border-radius: 4px;
@@ -84,7 +86,7 @@ body {
 }
 .google-btn i,
 .facebook-btn i{
-  font-size: 18px;
+  font-size: 16px;
   margin-right: 10px;
   color: var(--custom-blue);
 }
@@ -99,7 +101,6 @@ body {
 
 .registration-text {
   margin: 20px 0;
-  font-weight: 500;
   display: flex;
   align-items: center;
 }
@@ -107,7 +108,7 @@ body {
 .registration-text p {
   font-size: 14px;
   margin: 0;
-  padding-right: 10px; /* 調整文字和橫線之間的距離 */
+  padding-right: 10px;
 }
 
 /* text-with-line */
@@ -138,15 +139,8 @@ body {
 .checkbox-row {
   display: flex;
   align-items: center;
-  margin: 5px 0;
+  margin: 20px 0 0;
 }
-/* 
-.checkbox-row label{
-  font-size: 13px;
-  color: #777;
-  text-align: left; 
-  margin-left: 5px;
-} */
 
 .signup-btn {
   width: 100%;
@@ -185,4 +179,21 @@ body {
 .account-login-prompt{
   color: #777;
   margin-right:5px;
+}
+
+@media screen and (max-width: 430px) {
+  .signup-container {
+    margin: 0px;
+    padding: 20px 10px;
+    background-color: #FFFFFF;
+    display: inline-block;
+  }
+  .form-section {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0px 0px 0px;
+    max-width: 400px;
+    flex-direction: column;
+    margin: 0 auto;
+  }
 }

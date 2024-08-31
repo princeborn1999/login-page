@@ -10,7 +10,7 @@ interface InputComponentProps {
     required?: boolean;
     width?: string; // 新增寬度設置
     customClass?: string;
-    error?: string; // 错误信息
+    hasError?: boolean;
 }
 
 const InputComponent: React.FC<InputComponentProps> = ({
@@ -21,7 +21,7 @@ const InputComponent: React.FC<InputComponentProps> = ({
     onChange,
     required = false,
     customClass = '', // 默認為空字符串
-    error,
+    hasError,
   }) => {
     const [hasContent, setHasContent] = useState(!!value);
     const [showPassword, setShowPassword] = useState(type === 'password' ? false : true);
@@ -42,6 +42,7 @@ const InputComponent: React.FC<InputComponentProps> = ({
                 value={value}
                 onChange={handleChange}
                 required={required}
+                className={hasError ? 'input-error' : 'input-normal'}
             />
             {type === 'password' && (
             <span className = {`toggle-password ${showPassword ? 'visible' : ''}`} 
