@@ -17,7 +17,6 @@ const CheckBoxComponent: React.FC<CheckBoxComponentProps> = ({ formData, handleC
                 checked={formData.agreeToTerms}
                 onChange={handleChange}
                 className="checkbox-input"
-                required
             />
         </div>
        

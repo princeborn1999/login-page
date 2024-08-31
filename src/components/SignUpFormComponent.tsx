@@ -14,28 +14,7 @@ const SignUpFormComponent = () => {
     password: '',
     agreeToTerms: false,
   });
-  
-  const [errors, setErrors] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    // 其他字段的错误信息
-  });
-  
-  const validateForm = () => {
-    let formErrors: Record<string, string> = {};
-
-    // 使用导入的验证函数
-    const emailError = validateEmail(formData.email);
-    if (emailError) formErrors.email = emailError;
-
-    const passwordError = validatePassword(formData.password);
-    if (passwordError) formErrors.password = passwordError;
-
-    // 其他字段的验证逻辑
-    return formErrors;
-  };
+  const [hasEmpty, setHasEmpty] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
@@ -47,6 +26,16 @@ const SignUpFormComponent = () => {
 
   const clickToSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const hasEmptyField: boolean = Object.values(formData).some(value => 
+        typeof value === 'string' ? value.trim() === '' : !value
+      );
+    if(hasEmptyField || formData.agreeToTerms === false){
+      setHasEmpty(true)
+    }else{
+      setHasEmpty(false)
+    }
+
     console.log('Form submitted:', formData);
   };
 
@@ -60,9 +49,9 @@ const SignUpFormComponent = () => {
           <h2 className="start-text">Start from free</h2>
           <h1 className="create-text">Create an account</h1>
         </div>
-        <div className="err-text-wrap">
+        {hasEmpty && <div className="err-text-wrap">
           <ErrorMessageComponent />
-        </div>
+        </div>}
         <div className="signup-btn-wrap">
           <button className="google-btn"> 
             <i className="fab fa-google "></i>Sign up with Google
@@ -74,7 +63,7 @@ const SignUpFormComponent = () => {
         <div className="registration-text">
           <p>Or use your email for registration</p>
         </div>
-        <form onSubmit={clickToSubmit} className="signup-form">
+        <form className="signup-form" onSubmit={clickToSubmit}>
           <div className="input-row">
             <InputComponent
               type="text"
@@ -82,7 +71,6 @@ const SignUpFormComponent = () => {
               placeholder="First Name"
               value={formData.firstName}
               onChange={handleChange}
-              required
             />
             <InputComponent
               type="text"
@@ -90,7 +78,6 @@ const SignUpFormComponent = () => {
               placeholder="Last Name"
               value={formData.lastName}
               onChange={handleChange}
-              required
             />
           </div>
           <div className="input-row">
@@ -100,7 +87,6 @@ const SignUpFormComponent = () => {
               placeholder="E-mail"
               value={formData.email}
               onChange={handleChange}
-              required
             />
           </div>
           <div className="input-row">
@@ -110,11 +96,10 @@ const SignUpFormComponent = () => {
               placeholder="Password"
               value={formData.password}
               onChange={handleChange}
-              required
             />
           </div>
           <div className="">
-            <CheckListComponent />
+            <CheckListComponent password={formData.password}/>
           </div>
           <div className="checkbox-row">
             <CheckBoxComponent formData={formData} handleChange={handleChange}/>

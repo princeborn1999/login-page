@@ -24,7 +24,7 @@
     font-size: 18px;
     color: var(--custom-blue); /* 勾号颜色为白色 */
     position: absolute;
-    top: 0px;
+    top: -2px;
     left: 4px;
   }
   
