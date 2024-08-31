@@ -2,40 +2,39 @@
   display: flex;
 }
   
-.item {
+.checklist-item {
   display: flex;
   align-items: center;
   margin-bottom: 5px;
 }
   
 .check-icon {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  border: 1px solid #ccc;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  width: 11px; /* Width of the circle */
+  height: 11px; /* Height of the circle */
   margin-right: 10px;
-  color: white; /* 白色打勾 */
-  background-color: #ccc; /* 灰色背景 */
-  font-size: 10px; /* 縮小打勾符號 */
+
+  border-radius: 50%;
+  border: 1px solid var(--custom-gray);;
+
+  color: white; /* White check mark */
+  background-color: var(--custom-gray); /* Gray background */
+
+  font-size: 10px; /* check mark size */
 }
   
 .check-icon.completed {
-  font-size: 10px; /* 縮小打勾符號 */
-  background-color: var(--custom-lightgreen);
   border-color: var(--custom-lightgreen);
-  color: white;
+  background-color: var(--custom-lightgreen);
 }
-  
-.text {
+.checkbox-label-text {
   font-size: 12px;
   margin-right: 30px;
-  color: #888;
+  color: var(--custom-gray);
 }
-  
-.text.completed {
-  margin-right: 30px;
+.checkbox-label-text.completed {
   color: black;
 }

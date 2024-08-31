@@ -1,53 +1,67 @@
 .input-container {
     position: relative;
     width: 100%;
-    background-color: var(--custom-lightblue);
     border-radius: 8px;
+    background-color: var(--custom-lightblue);
 }
 
 .input-container input {
     width: 100%;
     height: 48px;
     padding: 20px 10px 6px 10px;
-    font-size: 16px;
+
     border-radius: 5px;
-    outline: none;
+
     background-color: transparent;
+
+    font-size: 16px;
+
+    outline: none;
 }
+
+/* Border style for input fields with no-errors */
 .input-normal {
     border: none;
 }
+/* Border style for input fields with errors */
 .input-error {
     border: 2px solid red;
 }
 
+/* Floating label style for input field*/
 .floating-label {
     position: absolute;
+    
     top: 50%;
     left: 10px;
+
     transform: translateY(-50%);
     color: #999;
     font-size: 16px;
+
     pointer-events: none;
     transition: 0.3s ease all;
 }
 .input-container input:focus + .floating-label {
     top: 10px;
+
     font-size: 12px;
     color: #000;
 }
+/* Style when input field contains content */
 .has-content{
     position: absolute;
-    top: 50%;
+
+    top: 10px;
     left: 10px;
     transform: translateY(-50%);
-    color: #999;
-    font-size: 16px;
+
+    color: black;
+    font-size: 12px;
+
+
     pointer-events: none;
     transition: 0.3s ease all;
-    top: 10px;
-    font-size: 12px;
-    color: #000;
 }
 
 /* Styles for Password toggle icon */
@@ -55,10 +69,13 @@
     position: absolute;
     top: 50%;
     right: 10px;
+
     transform: translateY(-50%);
-    cursor: pointer;
+
     font-size: 18px;
     color: #888;
+    
+    cursor: pointer;
 }
 /* Styles for Password toggle icon when it's visible */
 .toggle-password.visible {

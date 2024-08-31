@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { validateEmail, validatePassword } from 'utils/validators';
-import "styles/SignUpFormComponent.css";
 import InputComponent from "components/InputComponent";
 import CheckListComponent from "components/CheckListComponent";
 import CheckBoxComponent from "components/CheckBoxComponent";
 import ErrorMessageComponent from "./ErrorMessageComponent";
+import { validateEmail, validatePassword } from 'utils/validators';
+import "styles/SignUpFormComponent.css";
 
 const SignUpFormComponent = () => {
   const [formData, setFormData] = useState({

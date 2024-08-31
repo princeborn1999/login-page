@@ -1,13 +1,15 @@
 *{
-  font-family: 'Interstat', sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Interstat', sans-serif;
 }
 
 :root {
   --custom-blue: #3C71FF;
   --custom-red: #D71920;
+  --custom-gray: #ABABAB;
+
   --custom-lightred: #F5C4C6;
   --custom-lightblue: #F1F5FF;
   --custom-lightgreen: #4AE7A5;
