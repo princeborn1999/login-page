@@ -19,7 +19,7 @@ const InputComponent: React.FC<InputComponentProps> = ({
     hasError,
   }) => {
     const [hasContent, setHasContent] = useState(!!value);
-    const [showPassword, setShowPassword] = useState(type === 'password');
+    const [showPassword, setShowPassword] = useState(false);
     
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newValue = event.target.value;

@@ -3,19 +3,33 @@ import InputComponent from "components/InputComponent";
 import CheckListComponent from "components/CheckListComponent";
 import CheckBoxComponent from "components/CheckBoxComponent";
 import ErrorMessageComponent from "./ErrorMessageComponent";
-import { validateEmail, validatePassword } from 'utils/validators';
+import { validate } from "utils/validate";
 import "styles/SignUpFormComponent.css";
 
+interface FormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  agreeToTerms: boolean;
+}
+
 const SignUpFormComponent = () => {
-  const [formData, setFormData] = useState({
+
+  const [formData, setFormData] = useState<FormData>({
     firstName: '',
     lastName: '',
     email: '',
     password: '',
     agreeToTerms: false,
   });
-  const [hasEmpty, setHasEmpty] = useState(false)
 
+  const [hasEmpty, setHasEmpty] = useState(false)
+  // Store the error message
+  const [message, setMessage] = useState('')
+  // Holds validation errors for each field 
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -27,14 +41,30 @@ const SignUpFormComponent = () => {
   const clickToSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Check if there're any empty fields or agreeToTerms are not agreed
     const hasEmptyField: boolean = Object.values(formData).some(value => 
-        typeof value === 'string' ? value.trim() === '' : !value
-      );
-    if(hasEmptyField || formData.agreeToTerms === false){
+      typeof value === 'string' ? value.trim() === '' : !value
+    );
+    const missingFields = hasEmptyField || !formData.agreeToTerms;
+    if (missingFields) {
       setHasEmpty(true)
-    }else{
-      setHasEmpty(false)
+      setMessage('Please complete all the required fields to proceed.')
+      return; //Early Return, skip the validate each field
     }
+    setHasEmpty(false)
+    setMessage('')
+    
+    // Validate each field
+    const newErrors: { [key: string]: string } = {};
+    (Object.keys(formData) as Array<keyof FormData>).forEach(key => {
+      const error = validate(key, formData[key] as string);
+      if (error) {
+        newErrors[key] = error;
+      }
+      setMessage(Object.values(newErrors)[0])
+      setErrors(newErrors)
+    });
+
   };
 
   return (
@@ -47,8 +77,9 @@ const SignUpFormComponent = () => {
             <h2 className="start-text">Start from free</h2>
             <h1 className="create-text">Create an account</h1>
           </div>
-          {hasEmpty && <div className="err-text-wrap">
-            <ErrorMessageComponent />
+          {/* {hasEmpty && <div className="err-text-wrap"> */}
+          { (hasEmpty || message) && <div className="err-text-wrap">
+            <ErrorMessageComponent message={message}/>
           </div>}
           <div className="signup-btn-wrap">
             <button className="google-btn"> 
@@ -69,7 +100,7 @@ const SignUpFormComponent = () => {
                 placeholder="First Name"
                 value={formData.firstName}
                 onChange={handleChange}
-                hasError={hasEmpty && formData.firstName.trim() === ''}
+                hasError={(hasEmpty && formData.firstName.trim() === '') || !!errors['firstName']}
               />
               <InputComponent
                 type="text"
@@ -77,7 +108,7 @@ const SignUpFormComponent = () => {
                 placeholder="Last Name"
                 value={formData.lastName}
                 onChange={handleChange}
-                hasError={hasEmpty && formData.lastName.trim() === ''}
+                hasError={(hasEmpty && formData.lastName.trim() === '') || !!errors['lastName']}
               />
             </div>
             <div className="input-row">
@@ -87,7 +118,7 @@ const SignUpFormComponent = () => {
                 placeholder="E-mail"
                 value={formData.email}
                 onChange={handleChange}
-                hasError={hasEmpty && formData.email.trim() === ''}
+                hasError={(hasEmpty && formData.email.trim() === '') || !!errors['email']}
               />
             </div>
             <div className="input-row">
@@ -97,7 +128,7 @@ const SignUpFormComponent = () => {
                 placeholder="Password"
                 value={formData.password}
                 onChange={handleChange}
-                hasError={hasEmpty && formData.password.trim() === ''}
+                hasError={(hasEmpty && formData.password.trim() === '') || !!errors['password']}
               />
             </div>
             <div className="">
